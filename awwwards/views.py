@@ -120,13 +120,17 @@ def project(request, post):
             usability_ratings = [us.usability for us in post_ratings]
             usability_average = sum(usability_ratings) / len(usability_ratings)
 
+            creativity_ratings = [cr.creativity for cr in post_ratings]
+            creativity_average = sum(creativity_ratings) / len(usability_ratings)
+
             content_ratings = [content.content for content in post_ratings]
             content_average = sum(content_ratings) / len(content_ratings)
 
-            score = (design_average + usability_average + content_average) / 3
+            score = (design_average + creativity_average + usability_average + content_average) / 4
             print(score)
             rate.design_average = round(design_average, 2)
             rate.usability_average = round(usability_average, 2)
+            rate.creativity_average = round(creativity_average, 2)
             rate.content_average = round(content_average, 2)
             rate.score = round(score, 2)
             rate.save()
