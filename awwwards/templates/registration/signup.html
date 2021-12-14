@@ -7,13 +7,14 @@
         <div class="col-md-8">
             <div class="card" style="margin-top:2%; padding:20px;background-image: url(/static/images/froyo4.jpg);background-size: cover;">
                 <div class="card-body">
+                    <button style='cursor:none;' class="btn btn-light btn-sm hoverable" onclick="myFunction()"><img style="width: 20px;height: 20px" src="/static/images/try3.png" alt=""></button>
                     <h5 class="card-title"><a>Register to be a member</a> <span style="float:right">Are you a member? <a
-                            href="{% url 'login' %}" class="text-info">Login now</a></span></h5>
+                            href="{% url 'login' %}" class="text-info hoverable">Login</a></span></h5>
                     <div class="card-text">
                         <form action="" method="post" novalidate>
                             {% csrf_token%}
                             {{ form|crispy}}
-                            <button type="submit" class="btn btn-dark btn-sm"> Register</button>
+                            <button type="submit" class="btn btn-dark btn-sm hoverable"> Register</button>
                         </form>
                     </div>
                 </div>

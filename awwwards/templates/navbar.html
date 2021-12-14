@@ -1,10 +1,13 @@
 {% load crispy_forms_tags %}
 {% load static %}
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light scrolling-navbar" id="nbar">
+
+<!-- partial:index.partial.html -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light scrolling-navbar" id="nbar" >
+
     <div class="container" style="height: 55px;">
-        <a class="navbar-brand text-dark" href="{% url 'index' %}"> <strong class="mr-4 brand"> <img style="width: 100px;height: 100px;" src="/static/images/awards.png" alt=""></strong></a>
+        <a class="navbar-brand text-dark " href="{% url 'index' %}" style="cursor: none"> <strong class="mr-4 brand"> <img style="width: 100px;height: 100px;" src="/static/images/awards.png" alt=""></strong></a>
         <!-- Search -->
-        <li class="dropdown search dropdown-slide">
+        <li style="cursor:none" class="dropdown search dropdown-slide hoverable">
             <a href="/" class="text-dark" data-toggle="dropdown" data-hover="dropdown"><i style='margin-left: -30px;'
                     class="tf-ion-ios-search-strong"></i></a>
             <ul class="dropdown-menu search-dropdown bg-light" style='margin-top:0px;'>
@@ -44,7 +47,7 @@
                                 <div class="row ">
 
                                     <!-- Basic -->
-                                    <div class="col bg-light">
+                                    <div class="col bg-light hoverable">
                                         <ul>
                                             <li role="separator" class="divider"></li>
                                             <li><a style="font-size: 10px;" href="/">Upgrade to <span
@@ -69,11 +72,11 @@
                             </div>
                         </li>
                         {% else %}
-                            <a id="reg"style="margin-bottom: -15px;border-radius: 0px;margin-right: -9px;" href="{% url 'login' %}">REGISTER / LOGIN </a>
+                            <a id="reg"style="margin-bottom: -15px;border-radius: 0px;margin-right: -9px;cursor: none" href="{% url 'login' %}">REGISTER / LOGIN </a>
                         {% endif %}
                     </ul>
-                    <a id='reggy' style="border-radius: 0px;margin-right: -109px;margin-bottom: 5px;"
-                        class="btn btn-dark btn-md" id="site" data-toggle="modal" data-target="#form-modal">
+                    <a id='reggy' style="border-radius: 0px;margin-right: -109px;margin-bottom: 5px;cursor: none;"
+                        class="btn btn-dark btn-md hoverable" id="site" data-toggle="modal" data-target="#form-modal">
                         Submit your site!
                     </a>
                 

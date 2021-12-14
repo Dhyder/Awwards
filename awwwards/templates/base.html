@@ -21,13 +21,26 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="/static/css/slick.css">
     <link rel="stylesheet" href="/static/css/slick-theme.css">
-    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>
     <title>Awwards</title>
      {{ form.media }}
 </head>
 <body class='bg-light'>
 {% include 'navbar.html' %}
-
+<div class="cursor">
+    <div class="cursor__ball cursor__ball--big ">
+      <svg height="30" width="30">
+        <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
+      </svg>
+    </div>
+    
+    <div class="cursor__ball cursor__ball--small">
+      <svg height="10" width="10">
+        <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+      </svg>
+    </div>
+  </div>
 {% block content %}
 
 {% endblock %}
@@ -46,41 +59,45 @@ if('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js');
 });
 }
-var $els = $('.menu .redcrip, .menu .kichwa');
-var count = $els.length;
-var grouplength = Math.ceil(count/3);
-var groupNumber = 0;
-var i = 1;
-$('.menu').css('--count',count+'');
-$els.each(function(j){
-    if ( i > grouplength ) {
-        groupNumber++;
-        i=1;
-    }
-    $(this).attr('data-group',groupNumber);
-    i++;
-});
+const $bigBall = document.querySelector('.cursor__ball--big');
+const $smallBall = document.querySelector('.cursor__ball--small');
+const $hoverables = document.querySelectorAll('.hoverable');
 
-$('.menu .foot .loop').on('click',function(e){
-    e.preventDefault();
-    $els.each(function(j){
-        $(this).css('--top',$(this)[0].getBoundingClientRect().top + ($(this).attr('data-group') * -15) - 20);
-        $(this).css('--delay-in',j*.1+'s');
-        $(this).css('--delay-out',(count-j)*.1+'s');
-    });
-    $('.menu').toggleClass('closed');
-    e.stopPropagation();
-});
+// Listeners
+document.body.addEventListener('mousemove', onMouseMove);
+for (let i = 0; i < $hoverables.length; i++) {
+  $hoverables[i].addEventListener('mouseenter', onMouseHover);
+  $hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
+}
 
-// run animation once at beginning for demo
-setTimeout(function(){
-    $('.menu .foot .loop').click();
-    setTimeout(function(){
-        $('.menu .foot .loop').click();
-    }, (count * 100) + 500 );
-}, 1000);
+// Move the cursor
+function onMouseMove(e) {
+  TweenMax.to($bigBall, .4, {
+    x: e.clientX - 15,
+    y: e.clientY - 15 });
 
-    </script>
+  TweenMax.to($smallBall, .1, {
+    x: e.clientX - 5,
+    y: e.clientY - 7 });
+
+}
+
+// Hover an element
+function onMouseHover() {
+  TweenMax.to($bigBall, .3, {
+    scale: 4 });
+
+}
+function onMouseHoverOut() {
+  TweenMax.to($bigBall, .3, {
+    scale: 1 });
+
+}
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
 <script src="/static/js/script.js"></script>
 </body>
 </html>

@@ -9,11 +9,12 @@
 </head>
 
 {% block content %}
+
 <div class="container-fluid" style="margin-top:45px;">
     <div class="container-fluid">
         <!DOCTYPE html>
         <html class="no-js" lang="en">
-        <body class="home bg-light" data-debug="0">
+        <body class="home bg-light" data-debug="0" style="cursor: none;">
             <section id="content">
                 <div class="content-view">
                     <div class="box-site-head js-single-element"
@@ -24,18 +25,18 @@
                                     width="1920" height="720" class="lazy" />
                             </a>
                         </div>
-                        <div class="box-content over" style="background-image:url({{random_post.photo.cdn_url}});box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.414);background-size: cover;">
-                            <a href="{% url 'project' random_post.title %}"  class="site-link" aria-label=""></a>
+                        <div class="box-content over" style="background-image:url({{random_post.photo.cdn_url}});box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.612);background-size: cover;">
+                            <a style='cursor:none;' href="{% url 'project' random_post.title %}"  class="site-link" aria-label=""></a>
                             <div class="inner vertical-center">
                                 <div class="box-info">
                                     <div class="row mx-auto D-block">
-                                        <h2 class="heading-large"><a class='text-light' href="{% url 'project' random_post.title %}" id="grim"
-                                                style="margin-top:-100px;">{{ random_post.title }}</a>
+                                        <h2 class="heading-large animate__animated animate__flipInX animate__delay-0.5s"><a class='hoverable text-light' href="{% url 'project' random_post.title %}" id="grim"
+                                                style="margin-top:-100px;text-decoration: none;">{{ random_post.title }}</a>
                                         </h2>
                                     </div>
                                     <div class="row mx-auto D-block">
-                                        <div class="by text-light ">
-                                            by <strong><a href="">{{ random_post.user.username }}</a>
+                                        <div class="by text-light animated animate fadeInUp">
+                                            by <strong><a class='hoverable' href="">{{ random_post.user.username }}</a>
                                             </strong> from <strong class='text-light'>{{ random_post.user.profile.location.name }}</strong>
                                         </div>
                                     </div>
@@ -45,51 +46,51 @@
                                             {% if forloop.counter is random_post.ratings.all.count %}
                                             <li class="circle-note-progress style-design" data-note="">
                                                 <div class="circle">
-                                                    <div class="des">
-                                                        <p class="d-block mx-auto textrate text-light">{{rating.design_average}}
+                                                    <div class="des animated infinite animate__pulse">
+                                                        <p class="d-block mx-auto textrate text-light animate__animated infinite animate__zoomIn animate__delay-1s">{{rating.design_average}}
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div class="legend text-light">DESIGN</div>
+                                                <div class="legend text-light animate__animated animate__fadeInUp animate__delay-1s">DESIGN</div>
                                             </li>
                                             <li class="circle-note-progress style-usability"
                                                 data-note="{{rating.usability_average}}">
                                                 <div class="circle">
-                                                    <div class="des1">
-                                                        <p class="d-block mx-auto textrate text-light">{{rating.usability_average}}
+                                                    <div class="des1 animated infinite animate__pulse">
+                                                        <p class="d-block mx-auto textrate text-light animate__animated infinite animate__zoomIn animate__delay-2s">{{rating.usability_average}}
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div class="legend text-light">USABILITY</div>
+                                                <div class="legend text-light animate__animated animate__fadeInUp animate__delay-2s">USABILITY</div>
                                             </li>
                                             <li class="circle-note-progress style-creativity"
                                                 data-note="{{rating.content_average}}">
                                                 <div class="circle">
-                                                    <div class="des5">
-                                                        <p class="d-block mx-auto textrate text-light">{{rating.creativity_average}}
+                                                    <div class="des5 animated infinite animate__pulse">
+                                                        <p class="d-block mx-auto textrate text-light animate__animated infinite animate__zoomIn animate__delay-3s">{{rating.creativity_average}}
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div class="legend text-light">CREATIVITY</div>
+                                                <div class="legend text-light animate__animated animate__fadeInUp animate__delay-3s">CREATIVITY</div>
                                             </li>
                                             <li class="circle-note-progress style-creativity"
                                                 data-note="{{rating.content_average}}">
                                                 <div class="circle">
-                                                    <div class="des2">
-                                                        <p class="d-block mx-auto textrate text-light">{{rating.content_average}}
+                                                    <div class="des2 animated infinite animate__pulse">
+                                                        <p class="d-block mx-auto textrate text-light animate__animated infinite animate__zoomIn animate__delay-4s">{{rating.content_average}}
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div class="legend text-light">CONTENT</div>
+                                                <div class="legend text-light animate__animated animate__fadeInUp animate__delay-4s">CONTENT</div>
                                             </li>
                                             <li class="circle-note-progress style-content"
                                                 data-note="{{ rating.score }}">
                                                 <div class="circle">
-                                                    <div class="des3">
-                                                        <p class="d-block mx-auto textrate text-light">{{rating.score}}</p>
+                                                    <div class="des3 animated infinite animate__pulse">
+                                                        <p class="d-block mx-auto textrate text-light animate__animated infinite animate__zoomIn animate__delay-5s">{{rating.score}}</p>
                                                     </div>
                                                 </div>
-                                                <div class="legend text-light">SCORE</div>
+                                                <div class="legend text-light animate__animated animate__fadeInUp animate__delay-5s">SCORE</div>
                                             </li>
                                             {% endif %}
                                             {% endfor %}
@@ -105,11 +106,14 @@
                                     </div>
                                 </div>
                                 <div class="box-bl">
-                                    <a href="{{random_post.url}}" style="margin-bottom: -25px;"class="js-visit-item bt-default green-fill" target="_blank" rel="noopener nofollow">Visit Site</a>
-                                    <a href="{{random_post.url}}" style="margin-bottom: -25px;"class="js-visit-item bt-default white-outline" target="_blank" rel="noopener nofollow">Collect</a>
+                                    <a href="{{random_post.url}}" style="border-radius: 30px;cursor: none;margin-bottom: -25px;font-size: 12px;" class='hoverable btn btn-sm btn-cyan btn-left text-'>Visit Site</a>
+                                    <!-- <a href="{{random_post.url}}" style="border-radius: 30px;cursor: none;margin-bottom: -25px;font-size: 15px;" class='hoverable btn btn-sm btn-outline-light btn-left'><img style="width:20px;height:20px;margin-right: 20px;" src="/static/images/medal.png">Visit Site</a> -->
+                                    
+                                    <!-- <a href="{{random_post.url}}" style="margin-bottom: -25px;cursor: none;"class="js-visit-item bt-default green-fill hoverable" target="_blank" rel="noopener nofollow">Visit Site</a> -->
+                                    <a href="{% url 'project' random_post.title %}" style="margin-bottom: -25px;cursor: none;border-radius: 30px;font-size: 12px;"class="js-visit-item btn btn-sm btn-outline-white hoverable" target="_blank" rel="noopener nofollow">Review</a>
                                 </div>
                                 <div class="box-bl" style="margin-left: 1000px;margin-bottom:-25px;">
-                                   <span data-toggle="modal" data-target="#product-modal" style="border-radius: 30px;" class='btn btn-sm btn-light btn-left'><img style="width:20px;height:20px;margin-right: 20px;" src="/static/images/medal.png">Jury Votes</span>
+                                   <span data-toggle="modal" data-target="#product-modal" style="border-radius: 30px;cursor: none;" class='hoverable btn btn-sm btn-light btn-left'><img style="width:20px;height:20px;margin-right: 20px;" src="/static/images/medal.png">Jury Votes</span>
                                 </div>
                                 <span><img style="margin-left:9px;margin-top: 400px;" class="rounded-circle nav-img" src="{{ random_post.user.profile.profile_picture.url }}" alt=""></span>
                             </div>
@@ -121,7 +125,6 @@
 
         </html>
     </div>
-
     <div class="container">
         <h2 class="mt-4">Sites Of The Day</h2>
         {% if user.is_authenticated %}
@@ -158,14 +161,14 @@
                     <div class="product-item">
                         <div class="product-thumb">
                             <img style="width: 480px;height: 200px"class="card-img-top" src="{{ post.photo.cdn_url }}" alt="{{photo.title}}"/>
-                            <span class="bage" style="margin-top: 162px;position: absolute;right: 0;"><a class="text-light" href="{% url 'project' post.title %}">{{post.title|title}}<a href='{{post.url}}'><i style="margin-left: 5px;" class="tf-ion-ios-arrow-right text-light"></i></a></a></span>
+                            <span class="bage" style="margin-top: 162px;position: absolute;right: 0;"><a style="cursor: none;" class="text-light hoverable" href="{% url 'project' post.title %}">{{post.title|title}}<a href='{{post.url}}' target='_blank'><i style="margin-left: 5px;" class="tf-ion-ios-arrow-right text-light hoverable"></i></a></a></span>
                             <div class="preview-meta" style="margin-bottom: 125px;">
                                 <ul>
-                                    <a href="" style="font-size:20px;margin-left: 5px;"><img style="width: 18px;height:18px" src="/static/images/tree3.png" alt=""></a>
-                                    <a href="" style="font-size:20px;margin-left: 5px;"><img style="width: 18px;height:18px" src="/static/images/tree2.png" alt=""></a>
-                                    <a href="" style="font-size:20px;margin-left: 5px;"><i class="fa fa-pinterest text-light"></i></a>
-                                    <a href="" style="font-size:20px;margin-left: 5px;"><img style="width: 18px;height:18px" src="/static/images/tree6.png" alt=""></a>
-                                    <button style="border-radius: 20px;margin-left:40px;margin-top: 0px;font-size: 10px;height: 28px;width: 99px" class="btn btn-outline-light btn-sm">Collect</button>
+                                    <a href="" style="font-size:20px;margin-left: 5px;cursor: none;"><img style="width: 18px;height:18px" src="/static/images/tree3.png" alt=""></a>
+                                    <a href="" style="font-size:20px;margin-left: 5px;cursor: none;"><img style="width: 18px;height:18px" src="/static/images/tree2.png" alt=""></a>
+                                    <a href="" style="font-size:20px;margin-left: 5px;cursor: none;"><i class="fa fa-pinterest text-light"></i></a>
+                                    <a href="" style="font-size:20px;margin-left: 5px;cursor: none;"><img style="width: 18px;height:18px" src="/static/images/tree6.png" alt=""></a>
+                                    <button style="border-radius: 20px;margin-left:40px;margin-top: 0px;font-size: 10px;height: 28px;width: 99px;cursor: none;" class="btn btn-outline-light btn-sm">Collect</button>
                                 </ul>
                             </div>
                         </div>
@@ -183,7 +186,7 @@
                 </div>
                 <!-- Modal -->
                 <div class="modal product-modal fade" id="product-modal">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button style='cursor:none;' type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i class="tf-ion-close"></i>
                     </button>
                       <div class="modal-dialog " role="document">
@@ -203,7 +206,7 @@
                                                 {{ random_post.description }}
                                             </p>
                                             <p class="product-short-description"><span><img class="rounded-circle nav-img" src="{{ random_post.user.profile.profile_picture.url }}" alt=""></span> by {{ random_post.user.username }}</p>
-                                            <a href="{% url 'project' random_post.title %}" class="btn btn-main">RATE</a>
+                                            <a style='cursor:none;' href="{% url 'project' random_post.title %}" class="btn btn-main">RATE</a>
                                         </div>
                                     </div>
                                 </div>
