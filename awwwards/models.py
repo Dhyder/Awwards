@@ -11,7 +11,7 @@ import datetime as dt
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     profile_picture = models.ImageField(upload_to='images/', default='jigsaw.png')
-    bio = models.TextField(max_length=500, default="Once You Are In Hell, Only The Devil Can Help You Out.", blank=True)
+    bio = models.TextField(max_length=500, default="Hello, I want to play a game")
     name = models.CharField(blank=True, max_length=120)
     location = CountryField(blank_label='(select country)', default='KE')
     contact = models.EmailField(max_length=100, blank=True)
