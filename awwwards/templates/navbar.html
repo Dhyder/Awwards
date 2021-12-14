@@ -1,0 +1,84 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light scrolling-navbar" id="nbar">
+    <div class="container" style="height: 55px;">
+        <a class="navbar-brand text-dark" href="{% url 'index' %}"> <strong class="mr-4 brand"> <img style="width: 100px;height: 100px;" src="/static/images/awards.png" alt=""></strong></a>
+        <!-- Search -->
+        <li class="dropdown search dropdown-slide">
+            <a href="/" class="text-dark" data-toggle="dropdown" data-hover="dropdown"><i style='margin-left: -30px;'
+                    class="tf-ion-ios-search-strong"></i></a>
+            <ul class="dropdown-menu search-dropdown bg-light" style='margin-top:0px;'>
+                <li>
+                    <form method="get" action="{% url 'search' %}"><input id='spoiler' type="search"
+                            class="form-control bg-light" placeholder="Search..." name="title" aria-label="Search">
+                    </form>
+                    {% csrf_token %}
+                </li>
+            </ul>
+        </li><!-- / Search -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+
+                </li>
+            </ul>
+            <!-- Main Menu Section -->
+            <nav class="navigation">
+
+                <!-- Navbar Links -->
+                    <ul class="navbar-nav navbar-right">
+                        <!-- Elements -->
+                        <li class="dropdown-slide" style="margin-top:18px">
+                            {% if user.is_authenticated%}
+                            <span href=""
+                                style="border-radius: 0px;margin-top: 25px;color: black;font-size: 13px;height:10vh;"
+                                class="" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button"
+                                aria-haspopup="true" aria-expanded="false">{{ user.username|title }}<img
+                                    style="margin-left:9px" class="rounded-circle nav-img"
+                                    src="{{ user.profile.profile_picture.url }}" alt=""></span>
+                            <div class="dropdown-menu bg-light">
+                                <div class="row ">
+
+                                    <!-- Basic -->
+                                    <div class="col bg-light">
+                                        <ul>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a style="font-size: 10px;" href="/">Upgrade to <span
+                                                        class='badge badge-pill badge-dark'>pro</span></a></li>
+                                            <hr>
+                                            <li><a style="font-size: 10px;"
+                                                    href="{% url 'profile' user.username %}">Profile</a></li>
+                                            <li><a style="font-size: 10px;" href="{% url 'edit' user.username  %}">Edit
+                                                    Profile</a></li>
+                                            <li><a style="font-size: 10px;" href="/">Collections</a></li>
+                                            <li><a style="font-size: 10px;" href="/">Courses</a></li>
+                                            <li><a style="font-size: 10px;" href="/">Notifications</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <hr>
+                                            <li><a style="font-size: 10px;" href="/">Settings</a></li>
+                                            <li><a style="font-size: 10px;" href="/">Billing</a></li>
+                                            <li><a style="font-size: 10px;" href="{% url 'logout' %}">Logout</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {% else %}
+                            <a id="reg"style="margin-bottom: -15px;border-radius: 0px;margin-right: -9px;" href="{% url 'login' %}">REGISTER / LOGIN </a>
+                        {% endif %}
+                    </ul>
+                    <a id='reggy' style="border-radius: 0px;margin-right: -109px;margin-bottom: 5px;"
+                        class="btn btn-dark btn-md" id="site" data-toggle="modal" data-target="#form-modal">
+                        Submit your site!
+                    </a>
+                
+
+            </nav>
+        </div>
+    </div>
+</nav>

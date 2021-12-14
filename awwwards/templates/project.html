@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load ratings %}
+{% block content %}
+<div class="container" style="margin-top:8%">
+    <h5 class="mb-4 mt-4"><strong>{{ post.title }}</strong> by {{ post.user.username |title }} from {{ post.user.profile.location.name }} <span
+        id=""> <i class="tf-ion-android-globe"></i></span></h5>
+    <div class="card bg-light">
+        <div class="view overlay" style="background-image:url({{ post.photo.cdn_url }})">
+            <img class="card-img-top" style="visibility:hidden" width="100%"
+            src="{{ post.photo.cdn_url }}-/crop/1440x720/center/-/quality/lightest/" alt="{{photo.title}}">
+            <a href="">
+                <div class="mask rgba-black-slight">
+                    <!-- <div class="text-light" style="margin-top: 130px;display: flex;justify-content:center;font-size: 10px;">
+                    {%ratings post%}
+                    </div> -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 d-flex flex-row mx-auto" style="margin-top:20%">
+                                {% for rating in post.ratings.all %}
+                                {% if forloop.counter is post.ratings.all.count %}
+                                <div id="design">{{ rating.design_average}}<br>
+                                    <span style="font-size:12px;" class="rates text-center text-light">Design</span>
+                                </div>
+                                <div id="usable" class="mx-auto">{{ rating.usability_average }}<br>
+                                    <span style="font-size:12px;" class="rates text-center text-light">Usability</span>
+                                </div>
+                                <div id="design" style="border: 3px solid rgb(128, 0, 81);" class="mx-auto">{{ rating.design_average }}<br>
+                                    <span style="font-size:12px;" class="rates text-center text-light">Creativity</span>
+                                </div>
+                                <div id="contente">{{ rating.content_average }}<br>
+                                    <span style="font-size:12px;" class="rates text-center text-light">Content</span>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><strong>{{post.title|title}}</strong>
+                <a href="{{ post.url }}" style="float:right;" class="btn btn-sm btn-light mr-4"> Visit <i class="tf-ion-magnet"></i> </a></h5>
+            <p>By <span><a href="{% url 'userprofile' post.user.username %}" id="user" class="mr-2">{{ post.user.username|title }}</a></span>
+            <p>Location: {{post.user.profile.location}} <img src="{{post.user.profile.location.flag}}" alt=" {{post.user.profile.location.name}}"></p>
+            </p>
+            <p>{{ post.description }}</p>
+            <hr>
+            <p class="card-text "><img src="{{post.user.profile.profile_picture.url}}" class="nav-img mr-2 rounded-circle nav-img" alt="">
+                By {{post.user.username|title}} <span style="float:right">{{post.date|date}}</span>
+            </p>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <h3 class="D-block mx-auto">Ratings Scores</h3>
+                    {% for rating in post.ratings.all %}
+                    {% if forloop.counter is post.ratings.all.count %}
+                    <a class="btn btn-deep-purple btn-sm" style='border-radius: 60px;'><h5 class="text-light">{{ rating.design_average }}</h5>
+                        <span class="sc text-light">DESN</span>
+                    </a>
+                    <a class="btn btn-pink btn-sm" style='border-radius: 60px;' id="u"><h5 class="text-light">{{ rating.usability_average }}</h5>
+                        <span class="sc text-light">USABY</span>
+                    <a class="btn btn-warning btn-sm" style='border-radius: 60px;' id="u"><h5 class="text-light">{{ rating.design_average }}</h5>
+                        <span class="sc text-light">CRTY</span>
+                    </a>
+                    <a class="btn btn-danger btn-sm" style='border-radius: 60px;' id="c"><h5 class="text-light">{{ rating.content_average }}</h5>
+                        <span class="sc text-light">CONT</span>
+                    </a>
+                    <a class="btn btn-outline-black btn-round btn-sm" style='border-radius: 90px;' ><h5>{{ rating.score }}</h5>
+                        <span class="sc">Avg.S</span>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            {% if rating_status %}
+            <h5 class="text-center" style='margin-top: 70px;'>You have already voted</h5>
+            {% else %}
+            {% if user.is_authenticated %}
+            <a class="text-dark" style="display: flex;justify-content:center;font-size: 10px;">
+                {%ratings post%}
+            </a>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{rating_form|crispy}}
+                <button class="btn btn-sm btn-dark">Rate</button>
+            </form>
+            {% endif %}
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}
