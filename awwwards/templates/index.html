@@ -142,7 +142,7 @@
                                 <form action="" method="post" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {{ form|crispy }}
-                                    <input type="submit" class="btn btn-sm btn-dark" value="Save" />
+                                    <input type="submit" class="btn btn-sm btn-dark hoverable" value="Save" />
                             </div>
                             </form>
                         </div>
@@ -206,7 +206,7 @@
                                                 {{ random_post.description }}
                                             </p>
                                             <p class="product-short-description"><span><img class="rounded-circle nav-img" src="{{ random_post.user.profile.profile_picture.url }}" alt=""></span> by {{ random_post.user.username }}</p>
-                                            <a style='cursor:none;' href="{% url 'project' random_post.title %}" class="btn btn-main">RATE</a>
+                                            <a style='cursor:none;' href="{% url 'project' random_post.title %}" class="btn btn-main hoverable">RATE</a>
                                         </div>
                                     </div>
                                 </div>
