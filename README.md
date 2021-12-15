@@ -6,9 +6,9 @@
 Five Rings the Awwwards recreation.
 
 ## Screenshots
-![Ring]()
-![Ring]()
-![Ring]()
+![Ring](https://user-images.githubusercontent.com/86789832/146145967-a3f6c8fb-70f9-427f-ada4-50d556251679.png)
+![Ring](https://user-images.githubusercontent.com/86789832/146145391-d2b5f9d9-cd72-4d28-8162-38bf8ea0f898.png)
+![Ring](https://user-images.githubusercontent.com/86789832/146143639-077c5549-e9f2-4c94-99a0-2a0227e470e6.png)
 
 ## Live Link
 You can view the site at: [Five Rings](https://fiverings.herokuapp.com/)
@@ -85,5 +85,6 @@ You can view the site at: [Five Rings](https://fiverings.herokuapp.com/)
 ## Author's Contact Information
 * For any queries, you can reach out at [desastrecaliente@gmail.com]
 
-* [![License](https://img.shields.io/packagist/l/loopline-systems/closeio-api-wrapper.svg)]()  
-* Copyright (c) 2021 **Shaggy**
+[![License](https://img.shields.io/packagist/l/loopline-systems/closeio-api-wrapper.svg)](https://github.com/Dhyder/Awwards/blob/master/LICENSE)
+
+Copyright (c) 2021 **Shaggy**
