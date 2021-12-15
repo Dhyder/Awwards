@@ -4,25 +4,25 @@
 <!-- partial:index.partial.html -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light scrolling-navbar" id="nbar" >
 
-    <div class="container" style="height: 55px;">
+    <div class="container" style="height: 38px;">
         <a class="navbar-brand text-dark " href="{% url 'index' %}" style="cursor: none"> <strong class="mr-4 brand"> <img style="width: 100px;height: 100px;" src="/static/images/awards.png" alt=""></strong></a>
         <!-- Search -->
         <li style="cursor:none" class="dropdown search dropdown-slide hoverable">
-            <a href="/" class="text-dark" data-toggle="dropdown" data-hover="dropdown"><i style='margin-left: -30px;'
-                    class="tf-ion-ios-search-strong"></i></a>
-            <ul class="dropdown-menu search-dropdown bg-light" style='margin-top:0px;'>
-                <li>
-                    <form method="get" action="{% url 'search' %}"><input id='spoiler' type="search"
+            <a href="/"  style="cursor: none" class="text-secondary" data-toggle="dropdown" data-hover="dropdown"><i style='margin-left: -30px;'
+                class="tf-ion-ios-search-strong"></i></a>
+                <ul class="dropdown-menu search-dropdown bg-light" style='margin-top:0px;'>
+                    <li>
+                        <form method="get" action="{% url 'search' %}"><input id='spoiler' type="search"
                             class="form-control bg-light" placeholder="Search..." name="title" aria-label="Search">
-                    </form>
-                    {% csrf_token %}
-                </li>
-            </ul>
-        </li><!-- / Search -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                        </form>
+                        {% csrf_token %}
+                    </li>
+                </ul>
+            </li><!-- / Search -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -38,10 +38,10 @@
                         <li class="dropdown-slide" style="margin-top:18px">
                             {% if user.is_authenticated%}
                             <span href=""
-                                style="border-radius: 0px;margin-top: 25px;color: black;font-size: 13px;height:10vh;"
-                                class="" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button"
+                                style="font-size: 13px;"
+                                class="text-dark" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button"
                                 aria-haspopup="true" aria-expanded="false">{{ user.username|title }}<img
-                                    style="margin-left:9px" class="rounded-circle nav-img"
+                                    style="margin-left:9px;margin-bottom: 17px;" class="rounded-circle nav-img"
                                     src="{{ user.profile.profile_picture.url }}" alt=""></span>
                             <div class="dropdown-menu bg-light">
                                 <div class="row ">
@@ -71,16 +71,14 @@
                                 </div>
                             </div>
                         </li>
-                        {% else %}
-                            <a id="reg"style="margin-bottom: -15px;border-radius: 0px;margin-right: -9px;cursor: none" href="{% url 'login' %}">REGISTER / LOGIN </a>
-                        {% endif %}
                     </ul>
-                    <a id='reggy' style="border-radius: 0px;margin-right: -109px;margin-bottom: 5px;cursor: none;"
-                        class="btn btn-dark btn-md hoverable" id="site" data-toggle="modal" data-target="#form-modal">
+                    {% else %}
+                        <a id="" class="btn btn-light btn-sm hoverable"style="margin-bottom: 26px;border-radius: 0px;margin-right: -9px;cursor: none" href="{% url 'login' %}">REGISTER / LOGIN </a>
+                    {% endif %}
+                    <a id='' style="border-radius: 0px;margin-right: -58px;margin-bottom:26px;cursor: none;"
+                        class="btn btn-dark btn-sm hoverable" id="site" data-toggle="modal" data-target="#form-modal">
                         Submit your site!
                     </a>
-                
-
             </nav>
         </div>
     </div>
