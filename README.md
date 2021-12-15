@@ -4,6 +4,7 @@
 
 ## Description
 Five Rings the Awwwards recreation.
+A site where developers can get their sites reviewed and rated.
 
 ## Screenshots
 ![Ring](https://user-images.githubusercontent.com/86789832/146145967-a3f6c8fb-70f9-427f-ada4-50d556251679.png)
