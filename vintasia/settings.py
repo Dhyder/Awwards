@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'pyuploadcare.dj',
     'star_ratings',
     'django_countries',
+    'crispy_bootstrap5',
 ]
 
 UPLOADCARE = {
@@ -54,7 +55,7 @@ UPLOADCARE = {
 }
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -72,7 +73,8 @@ ROOT_URLCONF = 'vintasia.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -166,5 +168,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning'
 }
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 django_heroku.settings(locals())

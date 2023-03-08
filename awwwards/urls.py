@@ -1,5 +1,5 @@
-from django.urls import path, include
-from django.conf.urls import url, include
+from django.urls import path, re_path, include
+from django.conf.urls import include
 from . import views
 from rest_framework import routers
 
@@ -21,5 +21,5 @@ urlpatterns = [
     path('profile/<username>/settings', views.edit_profile, name='edit'),
     path('project/<post>', views.project, name='project'),
     path('search/', views.search_project, name='search'),
-    url(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
+    re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
